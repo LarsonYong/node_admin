@@ -7,8 +7,13 @@ module.exports = {
   path: path.join(__dirname, 'client'),
   filename: 'bundle.js'
  },
+ devServer: {
+  historyApiFallback: {
+    disableDotRule: true
+  }
+},
  module: {
-  loaders: [{
+  rules: [{
    test: /.jsx?$/,
    loader: 'babel-loader',
    exclude: /node_modules/,
@@ -19,6 +24,7 @@ module.exports = {
   {
    test: /\.css$/,
    loader: "style-loader!css-loader"
-  }]
+ },
+ { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }]
  }
 }
